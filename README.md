@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Tech Stack
 
-## Getting Started
+Next.js (App Router)
 
-First, run the development server:
+TypeScript
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+React
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Framer Motion (animations)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Modular Component Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Typed API Layer
 
-## Learn More
+📂 Project Structure & File Responsibilities
+app/
+│
+├── layout.tsx
+├── page.tsx
+├── globals.css
+│
+├── components/
+├── hooks/
+├── services/
+└── types/
 
-To learn more about Next.js, take a look at the following resources:
+🏗 Root Files
+layout.tsx
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Root layout wrapper for the entire application
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Defines global layout structure
 
-## Deploy on Vercel
+Loads global styles and persistent UI (if any)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+page.tsx
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Main entry page
+
+Renders the dashboard layout and main sections
+
+globals.css
+
+Global styling
+
+Base resets and shared styles
+
+🧩 Components
+📂 components/layout/
+DashdoardLayout.tsx
+
+Main dashboard structure
+
+Wraps:
+
+Chat Sidebar
+
+Chat Section
+
+Details Panel
+
+Navbar.tsx
+
+Top navigation bar
+
+Contains header actions / branding
+
+📂 components/dashboardSections/
+ChatSidebar.tsx
+
+Left panel
+
+Displays inbox conversation list
+
+InboxList.tsx
+
+Renders list of chat previews
+
+Likely maps conversation data
+
+ChatSection.tsx
+
+Center chat window
+
+Displays active conversation messages
+
+Handles message rendering & alignment logic
+
+DetailsPanel.tsx
+
+Right-side contextual panel
+
+Shows selected user/chat details
+
+Additional metadata display
+
+📂 components/sections/ (Reusable UI blocks)
+SectionHeader.tsx
+
+Standard section title component
+
+DataRow.tsx
+
+Displays label-value pairs
+
+InfoRow.tsx
+
+Informational structured row
+
+TagBadge.tsx
+
+Small badge/tag UI component
+
+📂 components/Skeletons/
+SkeletonBlock.tsx
+
+Loading placeholder component
+
+Used while data is fetching
+
+📂 components/honeycomb/
+HoneycombLoader.tsx
+
+Custom animated loading indicator
+
+🔌 Services Layer
+📂 services/api.ts
+
+Handles API logic
+
+Manages chat/message fetching
+
+Contains typed response mapping
+
+🔌 API Service Logic
+services/api.ts
+
+This file handles fetching and transforming dummy data to simulate a chat system.
+
+fetchUsers()
+
+Fetches users from https://dummyjson.com/users
+
+Returns only the first 8 users
+
+Used to populate the chat sidebar list
+
+fetchMessages(userId: number)
+
+Fetches all comments from https://dummyjson.com/comments
+
+Filters comments based on selected userId
+
+Ensures a minimum of 12 messages per conversation (fills with random comments if needed)
+
+Transforms API response into the app’s Message type
+
+Alternates sender (user / system) to simulate real chat
+
+Generates mock timestamps for UI display
+
+Purpose
+
+This API layer simulates a real chat backend using public dummy data, allowing UI development without needing a custom server.
+
+
+🧠 Types
+📂 types/index.ts
+
+Centralized TypeScript types
+
+Defines:
+
+Message
+
+Section
+
+Phase
+
+Chat-related interfaces
+
+Improves:
+
+Type safety
+
+Scalability
+
+Maintainability
