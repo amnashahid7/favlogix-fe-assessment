@@ -1,3 +1,7 @@
+Deployed App: https://favlogix-fe-assessment.vercel.app/
+
+
+
 🚀 Tech Stack
 
 Next.js (App Router)
